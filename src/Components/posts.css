@@ -1,0 +1,13 @@
+.posts {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .posts {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

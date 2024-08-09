@@ -1,0 +1,168 @@
+.navbar {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: "League Spartan", sans-serif;
+  position: sticky;
+  top: 0px;
+  padding: 8px;
+  border-bottom: 1px solid #fdfcfc;
+  z-index: 1000;
+  background-color: white;
+}
+
+.menubar {
+  background-color: rgb(20, 20, 20);
+  position: fixed;
+  width: 160px;
+  height: 100vh;
+  display: flex;
+  z-index: 100;
+  color: white;
+  transition: width 1s;
+  visibility: hidden;
+}
+.menubar-content {
+  padding: 20px 10px;
+  font-size: 3vw;
+  display: flex;
+}
+
+.menu-list {
+  list-style: none;
+}
+
+.menulist-item {
+  padding: 5px 40px;
+  margin-bottom: 15px;
+}
+
+.active {
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.left {
+  width: 20%;
+}
+.right {
+  width: 20%;
+}
+
+.center {
+  width: 60%;
+}
+
+.logo {
+  height: 75px;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+}
+
+.listItem {
+  list-style: none;
+  margin-right: 2.5vw;
+  font-size: 1.4vw;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  color: rgb(59, 58, 58);
+}
+
+.right-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-btn {
+  margin-left: 4px;
+  font-size: 1.2vw;
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 0.8vw 1.3vw;
+  border-radius: 10px;
+  font-family: "League Spartan", sans-serif;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: rgb(100, 99, 99);
+}
+
+.user-icon {
+  font-size: 1.3vw;
+  color: black;
+}
+
+.nav-icon {
+  margin-left: 1.5vw;
+}
+
+.menu {
+  visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .center {
+    display: none;
+  }
+
+  .menu {
+    visibility: visible;
+    font-size: 3.5vw;
+  }
+  .menu-icon {
+    width: 35%;
+  }
+  .left {
+    width: 35%;
+    display: flex;
+    align-items: center;
+  }
+
+  .right {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
+  .logo {
+    height: 70px;
+    margin-left: 20px;
+  }
+
+  .right-items {
+    display: flex;
+    justify-content: center;
+  }
+  .nav-btn-list {
+    display: flex;
+    justify-content: center;
+  }
+  .nav-btn {
+    font-size: 2.5vw;
+    padding: 4.2vwv 4.2vw;
+    margin-left: 4vw;
+  }
+  .menubar {
+    visibility: visible;
+  }
+
+  .user-icon {
+    font-size: 2vw;
+  }
+}

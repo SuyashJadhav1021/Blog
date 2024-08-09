@@ -1,0 +1,79 @@
+.header {
+  width: 90%;
+  margin: 10px;
+  margin-left: 15px;
+  display: flex;
+
+  height: 560px;
+  background: rgb(237, 237, 247);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 237, 247, 1) 0%,
+    rgba(250, 250, 250, 1) 35%,
+    rgba(204, 229, 250, 1) 99%
+  );
+  border-radius: 15px;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.left-header {
+  width: 60%;
+  padding: 20px;
+}
+
+.right-header {
+  width: 40%;
+}
+
+.left-header {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 5vw;
+  color: rgb(13, 13, 41);
+}
+
+.span-text {
+  color: rgb(214, 32, 63);
+}
+
+.left-content {
+  height: 100%;
+  width: 100%;
+  padding: 12%;
+}
+
+.header-btn {
+  padding: 1vw 3.3vw;
+  border-radius: 9px;
+  border: none;
+  background-color: rgb(235, 37, 70);
+  color: white;
+  font-size: 1.6vw;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .header {
+    width: 95%;
+    margin: 10px;
+    margin-left: 15px;
+
+    height: 400px;
+    background: none;
+    border-radius: 15px;
+  }
+
+  .left-header {
+    display: none;
+  }
+
+  .right-header {
+    width: 100%;
+    padding: 20px;
+  }
+}

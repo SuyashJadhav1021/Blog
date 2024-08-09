@@ -1,0 +1,103 @@
+.login {
+  width: 100%;
+  height: calc(100vh - 70px);
+  /* background-color: rgb(212, 211, 211);
+  filter: blur(73px); */
+  /* display: flex;
+  flex-direction: column; */
+  padding: 10px;
+  background: rgb(247, 238, 237);
+  background: linear-gradient(
+    90deg,
+    rgba(247, 238, 237, 1) 0%,
+    rgba(204, 229, 250, 1) 40%,
+    rgba(245, 199, 199, 1) 82%
+  );
+}
+
+.login-wrapper {
+  height: 80%;
+  width: 50%;
+  margin: 40px auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.login-form > input {
+  border: none;
+  border-bottom: 1px solid black;
+  height: 30px;
+  margin: 10px 0;
+}
+
+.login-form > input:focus {
+  outline: none;
+}
+
+.login-form > label {
+  margin: 4px 0;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.4vw;
+}
+
+.loginButton {
+  width: 80px;
+  align-self: center;
+  cursor: pointer;
+  padding: 0.6vw 1.4vw;
+  font-size: 1.2vw;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.loginButton:hover {
+  background-color: rgb(100, 99, 99);
+}
+
+.login-title {
+  font-family: "League Spartan", sans-serif;
+  margin: 30px 0;
+}
+
+.login-error {
+  color: tomato;
+  font-size: 1.5vw;
+  margin-top: 1.9vw;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .login-form {
+    width: 90%;
+  }
+
+  .login-title {
+    font-size: 3.3vw;
+  }
+
+  .login-form > label {
+    font-size: 3vw;
+  }
+
+  .login-wrapper {
+    width: 60%;
+  }
+
+  .loginButton {
+    width: 150px;
+    padding: 1vw 1.5vw;
+    font-size: 2.5vw;
+  }
+}

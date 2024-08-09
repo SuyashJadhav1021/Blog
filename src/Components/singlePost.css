@@ -1,0 +1,172 @@
+.singlePost {
+  width: 70%;
+}
+
+.post-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.singlepost-img {
+  width: 90%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 0.7vw;
+  margin-bottom: 1.2vw;
+}
+
+.singlepost-title {
+  font-family: "League Spartan", sans-serif;
+  margin: 1.2vw 0vw;
+  font-size: 3vw;
+}
+
+.singlepost-info {
+  width: 90%;
+}
+
+.singlepost-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.author-info {
+  margin: 0.7vw 0.3vw;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.3vw;
+}
+
+.singlep-icons {
+  width: 5%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.7vw 0.8vw;
+  cursor: pointer;
+}
+
+.edit {
+  color: teal;
+}
+
+.trash {
+  color: tomato;
+}
+
+.singlepost-desc {
+  font-family: "Exo 2", sans-serif;
+  color: #666;
+  line-height: 25px;
+  font-size: 1.1vw;
+}
+
+.singlepost-desc::first-letter {
+  margin-left: 22px;
+  font-size: 2vw;
+  font-weight: 600;
+}
+
+.singlepost-time {
+  color: #666;
+  font-family: "Exo 2", sans-serif;
+}
+
+.edit-input {
+  font-family: "League Spartan", sans-serif;
+  margin: 1.2vw 0vw;
+  font-size: 3vw;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  width: 80%;
+}
+
+.edit-input:focus {
+  outline: none;
+}
+
+.write-edit-input {
+  width: 80%;
+  font-size: 1.7vw;
+}
+
+.edit-button {
+  font-size: 1.2vw;
+  padding: 0.5vw 1vw;
+  border-radius: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  margin: 4px 0px;
+  font-family: "Exo 2", sans-serif;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: rgb(100, 99, 99);
+}
+.edit-icon {
+  color: teal;
+  position: relative;
+  left: 400px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .singlePost {
+    width: 100%;
+  }
+  .singlepost-title {
+    font-family: "League Spartan", sans-serif;
+    font-size: 4.4vw;
+  }
+
+  .singlepost-desc {
+    font-size: 2.5vw;
+  }
+
+  .singlepost-desc::first-letter {
+    font-size: 4vw;
+  }
+  .edit {
+    font-size: 2.4vw;
+  }
+
+  .trash {
+    font-size: 2.4vw;
+  }
+  .singlep-icons {
+    margin: 1vw;
+  }
+
+  .author-info {
+    margin: 0.7vw 0.3vw;
+    font-family: "League Spartan", sans-serif;
+    font-size: 2.4vw;
+  }
+
+  .edit-input {
+    font-size: 4.3vw;
+  }
+
+  .write-edit-input {
+    font-size: 2.5vw;
+  }
+
+  .edit-icon {
+    display: none;
+  }
+
+  .edit-button {
+    font-size: 2.8vw;
+    padding: 1.1vw 2.3vw;
+  }
+}
+
+@media screen and (max-width: 1278px) and (min-width: 600px) {
+  .edit-icon {
+    display: none;
+  }
+}
