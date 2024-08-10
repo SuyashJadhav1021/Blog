@@ -28,17 +28,21 @@ function Settings() {
       fileData.append("file", file);
       updatedUser.profilepic = filename;
       try {
-        await axios.post("/upload", fileData);
+        await axios.post(`${process.env.REACT_APP_BASEURL}/upload`, fileData);
       } catch (error) {
         console.log(error);
       }
     }
     try {
-      const res = await axios.put(`/user/${newUser._id}`, updatedUser, {
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-        },
-      });
+      const res = await axios.put(
+        `${process.env.REACT_APP_BASEURL}/user/${newUser._id}`,
+        updatedUser,
+        {
+          headers: {
+            Authorization: `Bearer ${newToken}`,
+          },
+        }
+      );
       setUser(res.data.user);
       setToken(res.data.token);
       window.location.reload();
@@ -49,12 +53,15 @@ function Settings() {
 
   const handleDelete = async (e) => {
     try {
-      await axios.delete(`/user/${newUser._id}`, {
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-          id: newUser._id,
-        },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_BASEURL}/user/${newUser._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${newToken}`,
+            id: newUser._id,
+          },
+        }
+      );
       setUser(null);
       setToken(null);
       setNewUser(null);

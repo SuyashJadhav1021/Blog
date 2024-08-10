@@ -12,10 +12,13 @@ function Login() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const res = await axios.post("/auth/login", {
-        username: usernameRef.current.value,
-        password: passRef.current.value,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_BASEURL}/auth/login`,
+        {
+          username: usernameRef.current.value,
+          password: passRef.current.value,
+        }
+      );
       setUser(res.data.others);
       setToken(res.data.token);
       window.location.replace("/");

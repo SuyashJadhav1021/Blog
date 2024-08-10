@@ -7,7 +7,6 @@ function Write() {
   const descRef = useRef();
   const [file, setFile] = useState(null);
   const { newToken, newUser } = useContext(Context);
-  console.log(file);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,17 +22,21 @@ function Write() {
       fileData.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("/upload", fileData);
+        await axios.post(`${process.env.REACT_APP_BASEURL}/upload`, fileData);
       } catch (error) {
         console.log(error);
       }
     }
     try {
-      const res = await axios.post("/posts", newPost, {
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-        },
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_BASEURL}/posts`,
+        newPost,
+        {
+          headers: {
+            Authorization: `Bearer ${newToken}`,
+          },
+        }
+      );
       window.location.replace("/post/" + res.data._id);
     } catch (error) {
       console.log(error);

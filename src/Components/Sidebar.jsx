@@ -8,7 +8,7 @@ function Sidebar() {
   const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {
-    const res = await axios.get("/user");
+    const res = await axios.get(`${process.env.REACT_APP_BASEURL}/user`);
     setUsers(res.data);
   };
 

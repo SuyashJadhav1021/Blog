@@ -3,17 +3,20 @@ import "./singlePost.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { Context } from "../Pages/context/context";
+import Loader from "./Loader";
 
 function SinglePost() {
   const { id } = useParams();
   const [post, setPost] = useState({});
-  const { newUser, newToken } = useContext(Context);
+  const { newUser, newToken, loading, setLoading } = useContext(Context);
   const [upload, setUpload] = useState(false);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const PF = "https://bloggify-w5po.onrender.com/images/";
   const fetchPost = async () => {
-    const res = await axios.get(`/posts/${id}`);
+    setLoading(true);
+    const res = await axios.get(`${process.env.REACT_APP_BASEURL}/posts/${id}`);
+    setLoading(false);
     setPost(res.data);
     setTitle(res.data.title);
     setDesc(res.data.desc);
@@ -25,7 +28,7 @@ function SinglePost() {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `/posts/${id}`,
+        `${process.env.REACT_APP_BASEURL}/posts/${id}`,
 
         {
           headers: {
@@ -47,11 +50,15 @@ function SinglePost() {
       username: post.username,
     };
     try {
-      await axios.put(`/posts/${id}`, updateData, {
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-        },
-      });
+      await axios.put(
+        `${process.env.REACT_APP_BASEURL}/posts/${id}`,
+        updateData,
+        {
+          headers: {
+            Authorization: `Bearer ${newToken}`,
+          },
+        }
+      );
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -60,69 +67,75 @@ function SinglePost() {
 
   return (
     <div className="singlePost">
-      <div className="post-wrapper">
-        {post.photo && (
-          <img src={PF + post.photo} alt="post" className="singlepost-img" />
-        )}
-        {upload ? (
-          <>
-            <i
-              class="edit-icon fa-solid fa-pen-to-square"
-              onClick={() => setUpload(!upload)}
-            ></i>
-            <input
-              type="text"
-              className="edit-input"
-              autoFocus
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="post-wrapper">
+          {post.photo && (
+            <img src={PF + post.photo} alt="post" className="singlepost-img" />
+          )}
+          {upload ? (
+            <>
+              <i
+                class="edit-icon fa-solid fa-pen-to-square"
+                onClick={() => setUpload(!upload)}
+              ></i>
+              <input
+                type="text"
+                className="edit-input"
+                autoFocus
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
 
-            <textarea
-              rows={15}
-              cols={50}
-              className="edit-input write-edit-input"
-              type="text"
-              value={desc}
-              onChange={(e) => setDesc(e.target.value)}
-            ></textarea>
-            <button className="edit-button" onClick={handleUpdate}>
-              Edit
-            </button>
-          </>
-        ) : (
-          <>
-            <h1 className="singlepost-title">{post.title}</h1>
-            <div className="singlepost-info">
-              <div className="singlepost-details">
-                <div className="author-info">
-                  <Link to={`/?username=${post.username}`}>
-                    <span className="author-info">Author:{post.username}</span>
-                  </Link>
-                  <span className="singlepost-time">
-                    {new Date(post.createdAt).toDateString()}
-                  </span>
-                </div>
-
-                {post.username === newUser?.username && (
-                  <div className="singlep-icons">
-                    <i
-                      class="edit fa-solid fa-pen-to-square"
-                      onClick={() => setUpload(!upload)}
-                    ></i>
-
-                    <i
-                      class="trash fa-solid fa-trash"
-                      onClick={handleDelete}
-                    ></i>
+              <textarea
+                rows={15}
+                cols={50}
+                className="edit-input write-edit-input"
+                type="text"
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+              ></textarea>
+              <button className="edit-button" onClick={handleUpdate}>
+                Edit
+              </button>
+            </>
+          ) : (
+            <>
+              <h1 className="singlepost-title">{post.title}</h1>
+              <div className="singlepost-info">
+                <div className="singlepost-details">
+                  <div className="author-info">
+                    <Link to={`/?username=${post.username}`}>
+                      <span className="author-info">
+                        Author:{post.username}
+                      </span>
+                    </Link>
+                    <span className="singlepost-time">
+                      {new Date(post.createdAt).toDateString()}
+                    </span>
                   </div>
-                )}
+
+                  {post.username === newUser?.username && (
+                    <div className="singlep-icons">
+                      <i
+                        class="edit fa-solid fa-pen-to-square"
+                        onClick={() => setUpload(!upload)}
+                      ></i>
+
+                      <i
+                        class="trash fa-solid fa-trash"
+                        onClick={handleDelete}
+                      ></i>
+                    </div>
+                  )}
+                </div>
+                <div className="singlepost-desc">{post.desc}</div>
               </div>
-              <div className="singlepost-desc">{post.desc}</div>
-            </div>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

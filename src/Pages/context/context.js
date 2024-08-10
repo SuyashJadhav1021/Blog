@@ -8,6 +8,7 @@ const ContextProvider = ({ children }) => {
   const [error, setError] = useState(false);
   const [token, setToken] = useState({});
   const [newToken, setNewToken] = useState({});
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (user && token) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -22,8 +23,6 @@ const ContextProvider = ({ children }) => {
     setNewUser(JSON.parse(localStorage.getItem("user")));
     setNewToken(localStorage.getItem("token"));
   }, []);
-  console.log(newToken);
-  console.log(newUser);
 
   return (
     <Context.Provider
@@ -40,6 +39,8 @@ const ContextProvider = ({ children }) => {
         newToken,
         setNewUser,
         setNewToken,
+        loading,
+        setLoading,
       }}
     >
       {children}
