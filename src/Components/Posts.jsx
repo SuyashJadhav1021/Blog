@@ -3,7 +3,6 @@ import "./posts.css";
 import Post from "./Post";
 
 function Posts({ posts }) {
-  console.log("prop:", posts);
   return (
     <div className="posts">
       {posts.map((post) => (
